@@ -1,7 +1,8 @@
 #alias activate=". ~/Documents/code/python/sandbox/bin/activate"
 alias ls="ls -G"
 
-export LSCOLORS=dxfxcxdxbxegedabagacad
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # Source .bashrc for PATH setting
 if [ -f ~/.bashrc ]; then
