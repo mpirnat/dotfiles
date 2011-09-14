@@ -1,12 +1,21 @@
-# Change the window title of X terminals
-case $TERM in
-    xterm*|rxvt|Eterm|eterm|aterm)
-        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
-        ;;
-    screen)                                                                             PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
-        ;;
-esac
+# Environment
 
+# Work dev server?
+if [ -d /disk2/ag ]; then
+    export SB="$HOME/sandbox"
+    export RB="$HOME/releasebox"
+    export PYTHONPATH="$SB/src/applib"
+    export BASH_ENV=$HOME/.bashrc
+    export VIM=/usr/local/share/vim/vim71
+    export EDITOR=/usr/local/bin/vim
+    export LD_LIBRARY_PATH=$PAYMENTECH_HOME:$LD_LIBRARY_PATH
+    export PATH=$HOME/git/bin:$SB/bin:/usr/java/jdk1.6.0_07/bin:$PATH
+
+    alias activate='. $SB/bin/activate'
+    alias relactivate='. $RB/bin/activate'
+    alias autoprops='svn propset svn:keywords "Id Rev Date Author"'
+    alias mtasc=/home/hzhong/sandbox/src/applib/mtasc/mtasc
+fi
 
 # Setting PATH (oh boy)
 
@@ -60,3 +69,14 @@ fi
 
 # ~/bin wins over all others
 PATH="~/bin:${PATH}"
+
+# Change the window title of X terminals
+case $TERM in
+    xterm*|rxvt|Eterm|eterm|aterm)
+        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
+        ;;
+    screen)                                                                             PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
+        ;;
+esac
+
+
