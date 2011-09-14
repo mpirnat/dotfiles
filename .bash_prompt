@@ -150,7 +150,11 @@ function dvcs_function() {
         fi
 
         # any conflicts? (sed madness is to remove line breaks)
-        files=$(git ls-files -u | cut -f 2 | sort -u | sed "$(($MAX_CONFLICTED_FILES+1)),1000d" | sed -n '1h;2,$H;${g;s/\n/, /g;p}')
+        if [ -d /disk2/ag/ ]; then
+            files=$(git ls-files -u | cut -f 2 | sort -u | sed "$(($MAX_CONFLICTED_FILES+1)),1000d" | sed -n '1h;2,$H;${g;s/\n/, /g;p}')
+        else
+            files=$(git ls-files -u | cut -f 2 | sort -u | sed "$(($MAX_CONFLICTED_FILES+1)),1000d" |  sed -e :a -e '\$!N;s/\\\n/, /;ta' -e 'P;D')
+        fi
     fi
 
     # If we are in mercurial ...
