@@ -1,5 +1,6 @@
 [ui]
 username = Mike Pirnat <mpirnat@gmail.com>
+verbose = True
 
 [extensions]
 hgext.convert=
