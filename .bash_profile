@@ -1,28 +1,14 @@
-alias activate=". ~/Documents/code/python/sandbox/bin/activate"
+#alias activate=". ~/Documents/code/python/sandbox/bin/activate"
 alias ls="ls -G"
 
 export LSCOLORS=dxfxcxdxbxegedabagacad
 
-export PATH=/usr/local/bin:/Applications/AIRSDK/bin:$PATH
+# Source .bashrc for PATH setting
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
 
-# Setting PATH for MacPython 2.6
-# The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/2.6/bin:${PATH}"
-export PATH
-
-# Setting PATH for Python 2.7
-# The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-export PATH
-
-# Setting PATH for Python 3.2
-# The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.2/bin:${PATH}"
-export PATH
-
-
-
-# Source my prompt-fu
+# Source .bash_prompt to make prompt pretty
 if [ -a ~/.bash_prompt ]; then
     . ~/.bash_prompt
 fi
