@@ -87,6 +87,27 @@ function is_submodule() {
     return 1
 }
 
+function parse_svn_branch() {
+    parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' \
+        | awk -F / '{
+            for (i = 1; i <= NF; i++) {
+                if ("trunk" == $(i)) {
+                    print "trunk"
+                }
+                else if ("branches" == $(i)) {
+                    print "-" $(i) "/" $(i+1)
+                }
+            }
+        }'
+}
+function parse_svn_url() {
+    svn info 2>/dev/null | sed -ne 's#^URL: ##p'
+}
+function parse_svn_repository_root() {
+    svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
+}
+
+
 function dvcs_function() {
     # Figure out what repo we are in
     _svn_check \
@@ -210,17 +231,19 @@ function dvcs_function() {
     if [ -n "$_svn_dir" ]; then
 
         # changed files in local directory? NOTE: This command is the slowest of the bunch
-        svnChange=$(svn status | ack "^M|^!" | wc -l)
-        if [[ "$svnChange" != "       0" ]]; then
-            svnChange="${COLOR_CYAN} \[`tput sc`\]  \[`tput rc`\]${DELTA_CHAR} "
-        else
-            svnChange=""
-        fi
+        # commented out due to slowness
+        svnChange=""
+        #svnChange=$(svn status | ack "^M|^!" | wc -l)
+        #if [[ "$svnChange" != "       0" ]]; then
+        #    svnChange="${COLOR_CYAN} \[`tput sc`\]  \[`tput rc`\]${DELTA_CHAR} "
+        #else
+        #    svnChange=""
+        #fi
 
         # revision number (instead of branch name, silly svn)
-        revNo=`svnversion --no-newline`
+        #revNo=`svnversion --no-newline`
         prompt="$prompt${COLOR_CYAN} (svn"
-        prompt="$prompt${COLOR_CYAN}:$revNo${COLOR_CYAN} "
+        prompt="$prompt${COLOR_CYAN}:$(parse_svn_branch)${COLOR_CYAN}"
         prompt="$prompt$svnChange)${COLOR_RESET}"
     fi
 
