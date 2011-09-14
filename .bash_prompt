@@ -1,0 +1,57 @@
+#!/bin/bash
+parse_hg_branch() {
+    hg branch 2> /dev/null | awk '{print "(HG)-" $1}'
+}
+
+parse_git_branch () {
+    git name-rev HEAD 2> /dev/null | sed 's#HEAD\ \(.*\)# (git::\1)#'
+}
+
+parse_svn_branch() {
+    parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' \
+        | awk -F / '{
+            for (i = 1; i <= NF; i++) {
+                if ("trunk" == $(i)) {
+                    print "-trunk"
+                }
+                else if ("branches" == $(i)) {
+                    print "-" $(i) "/" $(i+1)
+                }
+            }
+        }'
+}
+parse_svn_url() {
+    svn info 2>/dev/null | sed -ne 's#^URL: ##p'
+}
+parse_svn_repository_root() {
+    svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
+}
+ 
+# Colors
+c_wht="\[\033[00m\]"
+c_blk="\[\033[30m\]"
+c_red="\[\033[31;1m\]"
+c_grn="\[\033[32;1m\]"
+c_ylw="\[\033[33;1m\]"
+c_blu="\[\033[34;1m\]"
+c_prp="\[\033[35;1m\]"
+c_cyn="\[\033[36;1m\]"
+c_gry="\[\033[0;37m\]"
+ 
+# Window title text
+win_title='\[\e]2;\u@\H \w\a'
+ 
+# Normal
+PS1="[${c_grn}\u@\h${c_wht}] [${c_cyn}\d \t${c_wht}] [${c_ylw}\w${c_wht}]\n$ "
+ 
+# Sandboxed:
+if [ "$1" == "sandbox" ] && [ "$VIRTUAL_ENV" != "" ]; then
+    # prefix (sandbox) onto prompt
+    # don't show username/host
+    # update the colors a bit
+    # display subversion branch
+#    PS1="${win_title}${c_ylw}$(basename $VIRTUAL_ENV)\$(parse_svn_branch)${c_wht}:${c_grn}\w${c_wht}\$ "
+    PS1="[${c_grn}\u@\h:${c_red}$(basename $VIRTUAL_ENV)\$(parse_svn_branch)${c_wht}] [${c_cyn}\d \t${c_wht}] [${c_ylw}\w${c_wht}]\n$ "
+fi
+ 
+export PS1
