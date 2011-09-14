@@ -79,4 +79,13 @@ case $TERM in
         ;;
 esac
 
+# SVN bash completion
+if [ -f ~/.svn-completion.bash ]; then
+     . ~/.svn-completion.bash
+fi
+
+# Git bash completion
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
 
