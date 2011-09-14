@@ -10,11 +10,6 @@ esac
 
 # Setting PATH (oh boy)
 
-if [ -d "~/bin" ]; then
-    PATH="~/bin:${PATH}"
-    export PATH
-fi
-
 export PATH=/usr/local/bin:$PATH
 
 # Adobe AIR SDK
@@ -22,7 +17,7 @@ if [ -d "/Applications/AIRDSK/bin" ]; then
     PATH="/Applications/AIRSDK/bin:${PATH}"
     export PATH
 elif [ -d "/Applications/AdobeAIRSDK/bin" ]; then
-    PATH="/Applications/AdobeAIRSDK/bin"
+    PATH="/Applications/AdobeAIRSDK/bin:${PATH}"
     export PATH
 fi
 
@@ -62,3 +57,6 @@ if [ -d "/opt/local/sbin" ]; then
     export PATH=/opt/local/sbin:$PATH
 fi
 # Finished adapting your PATH environment variable for use with MacPorts.
+
+# ~/bin wins over all others
+PATH="~/bin:${PATH}"
