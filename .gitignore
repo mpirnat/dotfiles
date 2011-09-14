@@ -12,6 +12,7 @@
 .MacOSX
 .Trash
 .account
+.adobe
 .agimoinrc
 *.macports-saved*
 .bash_history
@@ -21,9 +22,10 @@
 .eclipse_keyring
 .exchange*
 .gdb_history
-.gmail
 .git
 .gitk
+.gmail
+.gnupg
 .idlerc
 .keystore
 .lesshst
@@ -34,6 +36,7 @@
 .rnd
 .ssh
 .viminfo
+Code
 Desktop
 Documents
 Dropbox
