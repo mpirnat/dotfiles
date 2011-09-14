@@ -5,7 +5,7 @@ verbose = True
 [extensions]
 hgext.convert=
 hgext.pager =
-prompt = /Users/mpirnat/Documents/code/hg-prompt/prompt.py
+prompt = ~/src/hg-prompt/prompt.py
 
 [pager]
 pager = less -FSRX
