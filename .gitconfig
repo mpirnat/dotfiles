@@ -4,6 +4,7 @@
 [core]
 	autocrlf = input
 	safecrlf = true
+    excludesfile = ~/.gitignore_global
 [alias]
 	co = checkout
 	ci = commit
@@ -12,6 +13,13 @@
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	type = cat-file -t
 	dump = cat-file -p
+    who = shortlog -s --
+    up = svn rebase
+    update = svn rebase
+    cherry-pick-svn = !GIT_EDITOR='sed -i /^git-svn-id:/d' git cherry-pick -e
+    branch-svn = svn branch
+    merge-svn = merge --squash
+    push-svn = svn dcommit
 
 [color]
 	ui = true
