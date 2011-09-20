@@ -1,5 +1,9 @@
 #alias activate=". ~/Documents/code/python/sandbox/bin/activate"
-alias ls="ls -G"
+if [ -d /disk2/ag ]; then
+    alias ls="ls --color"
+else
+    alias ls="ls -G"
+fi
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
