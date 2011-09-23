@@ -3,7 +3,8 @@
 # Work dev server?
 if [ -d /disk2/ag ]; then
     export SB="$HOME/sandbox"
-    export RB="$HOME/releasebox"
+    export APPLIB="$SB/src/applib"
+    export CONFIG="$SB/src/config"
     export PYTHONPATH="$SB/src/applib"
     export BASH_ENV=$HOME/.bashrc
     export VIM=/usr/local/share/vim/vim71
@@ -12,7 +13,6 @@ if [ -d /disk2/ag ]; then
     export PATH=$HOME/git/bin:$SB/bin:/usr/java/jdk1.6.0_07/bin:$PATH
 
     alias activate='. $SB/bin/activate'
-    alias relactivate='. $RB/bin/activate'
     alias autoprops='svn propset svn:keywords "Id Rev Date Author"'
     alias mtasc=/home/hzhong/sandbox/src/applib/mtasc/mtasc
 fi
