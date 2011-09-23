@@ -61,7 +61,7 @@ _git_dir=""
 function _git_check {
     _git_dir=`git rev-parse --show-toplevel 2> /dev/null`
     _top_subdir=`git rev-parse --show-prefix 2> /dev/null | sed "s/\/.*$//"`
-    _ignored=`grep "$_top_subdir" ~/.gitignore`
+    _ignored=`grep "^$_top_subdir$" ~/.gitignore`
     if [[ "$_git_dir" == "" ]]; then
         return 1
     elif [[ -n "$_top_subdir" ]]; then
