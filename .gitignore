@@ -16,6 +16,7 @@
 .agimoinrc
 *.macports-saved*
 .bash_history
+.cpan
 .crv2008
 .cups
 .dropbox
