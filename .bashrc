@@ -111,3 +111,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
     complete -o nospace -F _fab_complete fab
 fi
+
+# virtualenvwrapper
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    export VIRTUALENV_USE_DISTRIBUTE=1
+    export WORKON_HOME=$HOME/.virtualenvs
+    source /usr/local/bin/virtualenvwrapper.sh
+    export PIP_VIRTUALENV_BASE=$WORKON_HOME
+    export PIP_RESPECT_VIRTUALENV=true
+fi
