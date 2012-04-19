@@ -5,6 +5,7 @@ if [ -d /disk2/ag ]; then
     export SB="$HOME/sandbox"
     export APPLIB="$SB/src/applib"
     export CONFIG="$SB/src/config"
+    export IMG="$SB/src/htdocs/websitesimg/american/html"
     export PYTHONPATH="$SB/src/applib"
     export BASH_ENV=$HOME/.bashrc
     export VIM=/usr/local/share/vim/vim71
