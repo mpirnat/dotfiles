@@ -116,7 +116,7 @@ fi
 # virtualenvwrapper
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     export VIRTUALENV_USE_DISTRIBUTE=1
-    export WORKON_HOME=$HOME/.virtualenvs
+    export WORKON_HOME=$HOME/.virtualenvs/envs
     source /usr/local/bin/virtualenvwrapper.sh
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
     export PIP_RESPECT_VIRTUALENV=true
