@@ -2,6 +2,11 @@
 # This hook is run after a new virtualenv is activated.
 
 proj_name=$(echo $VIRTUAL_ENV|awk -F'/' '{print $NF}')
-mkdir $PROJECT_HOME/$proj_name
+
+if [[ ! -d "$PROJECT_HOME/$proj_name" ]] ; then
+    mkdir $PROJECT_HOME/$proj_name
+fi
+
 add2virtualenv $PROJECT_HOME/$proj_name
+
 cd $PROJECT_HOME/$proj_name
