@@ -121,3 +121,6 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
     export PIP_RESPECT_VIRTUALENV=true
 fi
+
+# pip cache - reduce duplicate downloads
+export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
