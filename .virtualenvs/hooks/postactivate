@@ -1,2 +1,12 @@
 #!/bin/bash
 # This hook is run after every virtualenv is activated.
+
+if [ -z "$VENV_PREACTIVATE_DIR" ] ; then
+    VENV_PREACTIVATE_DIR="`pwd`"
+    export VENV_PREACTIVATE_DIR
+fi
+
+proj_name=$(echo $VIRTUAL_ENV|awk -F'/' '{print $NF}')
+if [ -d "$PROJECT_HOME/$proj_name" ] ; then
+    cd $PROJECT_HOME/$proj_name
+fi
