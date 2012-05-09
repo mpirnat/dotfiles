@@ -1,3 +1,12 @@
 #!/bin/bash
 # This hook is run after a virtualenv is deleted.
 
+proj_dir=$PROJECT_HOME/$1
+
+if [[ -d "$proj_dir" ]] ; then
+    read -p "Remove project directory [$proj_dir] too? [y/n]: " REPLY
+    if [[ $REPLY =~ [Yy][Ee]{0,1}[Ss]{0,1} ]] ; then
+        echo "Okay, you asked for it..."
+        rm -rf $proj_dir
+    fi
+fi
