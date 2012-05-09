@@ -31,6 +31,7 @@
 .keystore
 .lesshst
 .mbsync*
+.netrwhist
 .pip_download_cache
 .pivotal*
 .python-eggs
