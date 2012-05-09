@@ -39,7 +39,7 @@
 .ssh
 .viminfo
 .virtualenvs/envs
-.virtualenvs/hook.log*
+.virtualenvs/logs
 Code
 Desktop
 Documents

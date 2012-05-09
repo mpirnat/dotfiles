@@ -7,4 +7,6 @@ if [ -z "$VENV_PREACTIVATE_DIR" ] ; then
 fi
 
 proj_name=$(echo $VIRTUAL_ENV|awk -F'/' '{print $NF}')
-cd $HOME/code/$proj_name
+if [ -d "$PROJECT_HOME/$proj_name" ] ; then
+    cd $PROJECT_HOME/$proj_name
+fi
