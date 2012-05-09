@@ -38,6 +38,8 @@
 .rnd
 .ssh
 .viminfo
+.virtualenvs/envs
+.virtualenvs/hook.log*
 Code
 Desktop
 Documents
