@@ -116,6 +116,7 @@ fi
 # virtualenvwrapper
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     export VIRTUALENV_USE_DISTRIBUTE=1
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
     export WORKON_HOME=$HOME/.virtualenvs/envs
     export PROJECT_HOME=$HOME/code
     export VIRTUALENVWRAPPER_HOOK_DIR=$HOME/.virtualenvs/hooks
