@@ -23,6 +23,7 @@
 .eclipse_keyring
 .exchange*
 .gdb_history
+.gem
 .git
 .gitk
 .gmail
