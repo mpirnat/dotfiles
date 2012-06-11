@@ -12,6 +12,7 @@ if [ -d /disk2/ag ]; then
     export EDITOR=/usr/local/bin/vim
     export LD_LIBRARY_PATH=$PAYMENTECH_HOME:$LD_LIBRARY_PATH
     export PATH=$HOME/git/bin:$SB/bin:/usr/java/jdk1.6.0_07/bin:$PATH
+    export GIT_SSH=`which sshdo`
 
     alias activate='. $SB/bin/activate'
     alias autoprops='svn propset svn:keywords "Id Rev Date Author"'
