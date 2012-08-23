@@ -434,3 +434,13 @@ autocmd BufReadPost *.doc silent %!antiword -i 1 -s -f "%" - |fmt -csw78
 " jump to the last known position in a file
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
 
+" remove trailing whitespace from source code
+autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.pd :%s/\s\+$//e
+autocmd BufWritePre *.js :%s/\s\+$//e
+autocmd BufWritePre *.html :%s/\s\+$//e
+autocmd BufWritePre *.rb :%s/\s\+$//e
+autocmd BufWritePre *.c :%s/\s\+$//e
+autocmd BufWritePre *.markdown :%s/\s\+$//e
+autocmd BufWritePre *.md :%s/\s\+$//e
+autocmd BufWritePre *.rst :%s/\s\+$//e
