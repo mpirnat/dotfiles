@@ -17,6 +17,9 @@ if [ -d /disk2/ag ]; then
     alias activate='. $SB/bin/activate'
     alias autoprops='svn propset svn:keywords "Id Rev Date Author"'
     alias mtasc=/home/hzhong/sandbox/src/applib/mtasc/mtasc
+
+#    find /weblog -user mpirnat -print0 | xargs -0 chmod 666 &> /dev/null
+#    find /weblog -user mpirnat -print0 | xargs -0 chgrp devs &> /dev/null
 fi
 
 # Setting PATH (oh boy)
