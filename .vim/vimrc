@@ -435,4 +435,4 @@ autocmd BufReadPost *.doc silent %!antiword -i 1 -s -f "%" - |fmt -csw78
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
 
 " remove trailing whitespace from source code
-autocmd BufWritePre *.{py,pd,js,html,rb,c,cpp,markdown,md.rst,java,php,cfg} :%s/\s\+$//e
+autocmd BufWritePre *.{py,pd,js,html,rb,c,cpp,markdown,md,rst,java,php,cfg} :%s/\s\+$//e
