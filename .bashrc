@@ -8,8 +8,8 @@ if [ -d /disk2/ag ]; then
     export IMG="$SB/src/htdocs/websitesimg/american/html"
     export PYTHONPATH="$SB/src/applib"
     export BASH_ENV=$HOME/.bashrc
-    export VIM=/usr/local/share/vim/vim71
-    export EDITOR=/usr/local/bin/vim
+    export VIM=/usr/share/vim
+    export EDITOR=/usr/bin/vim
     export LD_LIBRARY_PATH=$PAYMENTECH_HOME:$LD_LIBRARY_PATH
     export PATH=$HOME/git/bin:$SB/bin:/usr/java/jdk1.6.0_07/bin:$PATH
     #export GIT_SSH=`which sshdo`
