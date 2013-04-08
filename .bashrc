@@ -132,3 +132,6 @@ fi
 
 # pip cache - reduce duplicate downloads
 export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
+
+# typo aliases
+gits() { if [[ $@ == "t" ]]; then command git st | more; else command ls "$@"; fi; }
