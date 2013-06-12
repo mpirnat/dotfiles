@@ -69,6 +69,11 @@ if [ -d "/opt/local/sbin" ]; then
 fi
 # Finished adapting your PATH environment variable for use with MacPorts.
 
+# Basic TeX
+if [ -d "/usr/local/texlive/2012basic/bin/universal-darwin" ]; then
+    export PATH=$PATH:/usr/local/texlive/2012basic/bin/universal-darwin
+fi
+
 # ~/bin wins over all others
 PATH="~/bin:${PATH}"
 
