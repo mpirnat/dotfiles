@@ -1,7 +1,7 @@
 # Environment
 
 # Work dev server?
-if [ -d /disk2/ag ]; then
+if [ -d /disk2/ag ] || [ -h /disk2/ag ]; then
     export SB="$HOME/sandbox"
     export APPLIB="$SB/src/applib"
     export CONFIG="$SB/src/config"
