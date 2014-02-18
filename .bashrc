@@ -1,15 +1,15 @@
 # Environment
 
 # Work dev server?
-if [ -d /disk2/ag ]; then
+if [ -d /disk2/ag ] || [ -h /disk2/ag ]; then
     export SB="$HOME/sandbox"
     export APPLIB="$SB/src/applib"
     export CONFIG="$SB/src/config"
     export IMG="$SB/src/htdocs/websitesimg/american/html"
     export PYTHONPATH="$SB/src/applib"
     export BASH_ENV=$HOME/.bashrc
-    export VIM=/usr/local/share/vim/vim71
-    export EDITOR=/usr/local/bin/vim
+    export VIM=/usr/share/vim
+    export EDITOR=/usr/bin/vim
     export LD_LIBRARY_PATH=$PAYMENTECH_HOME:$LD_LIBRARY_PATH
     export PATH=$HOME/git/bin:$SB/bin:/usr/java/jdk1.6.0_07/bin:$PATH
     #export GIT_SSH=`which sshdo`
@@ -17,6 +17,9 @@ if [ -d /disk2/ag ]; then
     alias activate='. $SB/bin/activate'
     alias autoprops='svn propset svn:keywords "Id Rev Date Author"'
     alias mtasc=/home/hzhong/sandbox/src/applib/mtasc/mtasc
+
+#    find /weblog -user mpirnat -print0 | xargs -0 chmod 666 &> /dev/null
+#    find /weblog -user mpirnat -print0 | xargs -0 chgrp devs &> /dev/null
 fi
 
 # Setting PATH (oh boy)
@@ -68,6 +71,11 @@ if [ -d "/opt/local/sbin" ]; then
     export PATH=/opt/local/sbin:$PATH
 fi
 # Finished adapting your PATH environment variable for use with MacPorts.
+
+# Basic TeX
+if [ -d "/usr/local/texlive/2012basic/bin/universal-darwin" ]; then
+    export PATH=$PATH:/usr/local/texlive/2012basic/bin/universal-darwin
+fi
 
 # ~/bin wins over all others
 PATH="~/bin:${PATH}"
@@ -129,3 +137,6 @@ fi
 
 # pip cache - reduce duplicate downloads
 export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
+
+# typo aliases
+gits() { if [[ $@ == "t" ]]; then command git st | more; else command ls "$@"; fi; }
